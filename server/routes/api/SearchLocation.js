@@ -12,7 +12,7 @@ module.exports = (app) => {
     fetch(url)
       .then(response => response.json())
       .then(json => {
-        res.send({ data : json.coord.lon });
+        res.send({ data : json });
       })
       .catch(err => {
           res.send({error:'Ocurrio un error'});
