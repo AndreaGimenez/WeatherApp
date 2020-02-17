@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
+import Layout from '../containers/layout';
 
 class App extends React.Component{
   render(){
-    return(<div>WELCOME TO THE WEATHER APP</div>)
+    return(
+      <BrowserRouter>
+          <Layout/>
+      </BrowserRouter>
+    )
   }
 }
 
