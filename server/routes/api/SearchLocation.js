@@ -9,7 +9,7 @@ module.exports = (app) => {
 
   app.post('/search-location-weather', (req, res) => {
 		zipcode = req.body.zipcode;
-console.log(zipcode)
+
 		if(!zipcode || zipcode.length < 5 || zipcode.length > 5) {
 			res.redirect('/error');
 		} else {
@@ -20,7 +20,7 @@ console.log(zipcode)
   app.get('/search-location-weather', (req, res) => {
     //build api URL with user zip
     const url = baseUrl + zipcode + unit + apiKey;
-    console.log(url)
+
     fetch(url)
       .then(response => response.json())
       .then(json => {
