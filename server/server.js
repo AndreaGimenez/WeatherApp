@@ -1,17 +1,21 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const morgan = require('morgan');
+const port = 5000 ;
+
+//settings
+app.set('port', process.env.PORT || port);
+app.set('json spaces', 2)
+
+//middlewares
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const fetch = require('node-fetch');
+
 // By importing the /routes directory that the index.js file is located in,
 // our backend sever will have access to every API route we create
 require('./routes')(app);
-
-// create a GET route
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT :)' });
-});
 
 // console.log that your server is up and running
 app.listen(port, (err) => {

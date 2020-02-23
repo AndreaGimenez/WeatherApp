@@ -1,7 +1,6 @@
 import React from 'react';
 import WeatherInfo from '../../components/Weather/Results';
-import Home from '../../components/Home';
-import Form from '../../components/Weather/Form';
+
 import { Route, Link } from 'react-router-dom';
 
 const navigate = (url) => {
@@ -15,9 +14,9 @@ class Layout extends React.Component {
         <div style={{display:"flex"}}>
           <div>ANDRE WEATHER APP</div>
         </div>
-        <Route path="/" exact component={Home}/>
+
         <Route path="/weatherinfo" exact component={WeatherInfo}/>
-        <Route path="/search" exact component={Form}/>
+
       </div>
     )
   }
