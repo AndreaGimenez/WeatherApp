@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+const { Router } = require('express');
+const router = Router();
 
-module.exports = (app) => {
-  fs.readdirSync('routes/api/').forEach((file) => {
-    require(`./api/${file.substr(0, file.indexOf('.'))}`)(app)
-  });
-}
+const { getWeatherByZipcode } = require('../controller/index.controller');
+
+router.get('/search-location-weather/:zipcode', getWeatherByZipcode)
+
+module.exports = router;

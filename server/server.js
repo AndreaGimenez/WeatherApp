@@ -11,11 +11,11 @@ app.set('json spaces', 2)
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const fetch = require('node-fetch');
+app.use(express.urlencoded({extended:true}));
 
-// By importing the /routes directory that the index.js file is located in,
-// our backend sever will have access to every API route we create
-require('./routes')(app);
+
+//routes
+app.use(require('./routes/index'));
 
 // console.log that your server is up and running
 app.listen(port, (err) => {
