@@ -42,7 +42,7 @@ class Results extends Component {
   }
     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   callBackendAPI = async () => {
-    const response = await fetch('/search-location-weather');
+    const response = await fetch('/search-location-weather/' + this.props.match.params.zipcode);
     const body = await response.json();
     if (response.status !== 200) {
       throw Error(body.message)
@@ -51,6 +51,7 @@ class Results extends Component {
   };
 
   render() {
+    console.log("this.props",this.props.match.params.zipcode)
     return (
       <div className="Results">
         { this.state.loaded ?
