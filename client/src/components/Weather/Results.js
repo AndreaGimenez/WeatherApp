@@ -103,7 +103,7 @@ class WeatherInfo extends Component{
         </div>
         <div style={backStyle}>
           <Link to="/" style={{color: "black", textDecorationLine: "none"}}>
-            HOME
+            RETURN HOME
           </Link>
         </div>
       </div>

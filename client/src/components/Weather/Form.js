@@ -52,7 +52,7 @@ class Form extends React.Component {
               label="zipcode"
               variant="outlined"
               name='zipcode'
-              placeholder="zipcode"
+              placeholder="ex: 90210, 10010 or 85001"
               value={this.state.zipcode}
               onChange={this.handleChange}
               />
