@@ -4,10 +4,6 @@ import ButtonAppBar from './appbar.js';
 
 import { Route } from 'react-router-dom';
 
-const navigate = (url) => {
-  window.location = 'http://localhost:3000' + url;
-}
-
 class Layout extends React.Component {
   render(){
     return(

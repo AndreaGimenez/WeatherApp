@@ -1,8 +1,6 @@
 import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import { Redirect } from "react-router-dom";
 
 const buttonStyles = {
@@ -31,7 +29,6 @@ class Form extends React.Component {
 
   redirectToWeatherInfo = (e) => {
     e.preventDefault()
-    console.log(this.state.zipcode)
     const path = '/weatherinfo/' + this.state.zipcode
     this.setState({redirect: path})
   }

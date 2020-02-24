@@ -9,7 +9,6 @@ import SnowIcon from './assets/weather_icons/03W.svg';
 import ClearIcon from './assets/weather_icons/04W-DAY.svg';
 import CloudsIcon from './assets/weather_icons/05W.svg';
 import NoLocationFound from './assets/no-location.svg';
-import LoadingIcon from './assets/loading.svg';
 
 const cardStyle = {
   marginLeft: "33%",
@@ -51,7 +50,6 @@ class Results extends Component {
   };
 
   render() {
-    console.log("this.props",this.props.match.params.zipcode)
     return (
       <div className="Results">
         { this.state.loaded ?
@@ -84,11 +82,11 @@ class WeatherInfo extends Component{
 	   } else if(weatherId >= 700 && weatherId <= 804) {
 	       return CloudsIcon;
 	   }
-     return "";
+     return NoLocationFound;
   }
 
   render(){
-    const { weather, main, wind, city, country, temp, clouds } = this.props
+    const { weather, wind, city, country, temp, clouds } = this.props
     return(
       <div style={{marginTop:"4%"}}>
         <div style={cardStyle}>
