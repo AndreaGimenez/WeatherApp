@@ -3,6 +3,8 @@ import Form from '../Weather/Form';
 
 export default function Home() {
   return(
-    <Form />
+    <div>
+      <Form />
+    </div>
   );
 }

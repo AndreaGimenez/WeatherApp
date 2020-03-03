@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Spinner from '../Spinner';
 import { Link } from 'react-router-dom';
 
 //Assets
@@ -15,58 +14,15 @@ const cardStyle = {
   width:  "35%",
   border: "2px solid black",
   textAlign: "center",
-  borderRadius: "10px"
+  borderRadius: "10px",
+  padding: "3%",
 }
 
 const backStyle = {
-  marginLeft: "46%",
+  marginLeft: "49%",
   marginTop: "5%",
   width: "10%",
   textAlign: "center",
-}
-
-class Results extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      data : null,
-      loaded: false,
-    }
-}
-  componentDidMount() {
-      // Call our fetch function below once the component mounts
-    this.callBackendAPI()
-      .then(res => this.setState({data: res.data, loaded : true}))
-      .catch(err => console.log(err))
-  }
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/search-location-weather/' + this.props.match.params.zipcode);
-    const body = await response.json();
-    if (response.status !== 200) {
-      throw Error(body.message)
-    }
-    return body;
-  };
-
-  render() {
-    return (
-      <div className="Results">
-        { this.state.loaded ?
-            <WeatherInfo
-              weather={this.state.data.weather}
-              temp={this.state.data.main}
-              wind={this.state.data.wind}
-              country={this.state.data.sys}
-              city={this.state.data.name}
-              clouds = {this.state.data.clouds}
-            />
-          :
-            <Spinner />
-        }
-      </div>
-    );
-  }
 }
 
 class WeatherInfo extends Component{
@@ -111,4 +67,4 @@ class WeatherInfo extends Component{
   }
 }
 
-export default Results;
+export default WeatherInfo;

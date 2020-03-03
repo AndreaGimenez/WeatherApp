@@ -4,16 +4,27 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './Home';
 import Form from './Weather/Form';
 import Layout from '../containers/layout';
-import Results from './Weather/Results'
+import ResultsByZipcode from './Weather/ResultsByZipcode';
+import ResultsByCity from './Weather/ResultsByCity';
+import CitiesArgentina from './Weather/CitiesArgentina';
 
 class App extends React.Component{
   render(){
     return(
       <BrowserRouter>
           <Layout/>
-          <Route path="/" exact component={Home}/>
-          <Route path="/search" exact component={Form}/>
-          <Route path="/weatherinfo/:zipcode" exact component={Results}/>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/search" exact>
+            <Form />
+          </Route>
+          <Route path="/weatherinfo/:zipcode" exact component={ResultsByZipcode}/>
+          <Route path="/argentina" exact>
+            <CitiesArgentina />
+          </Route>
+          <Route path="/argentina/:city" exact component={ResultsByCity}>
+          </Route>
       </BrowserRouter>
     )
   }
