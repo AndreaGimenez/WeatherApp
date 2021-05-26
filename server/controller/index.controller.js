@@ -28,7 +28,21 @@ const getWeatherByZipcode = (req, res) => {
       });
  }
 
+ const getCityByGeoposition = (req, res) => {
+  const point = [req.params.lat, req.param.lng]
+  const url = baseUrl + "lat=" + req.params.lat + "&lon=" + req.params.lon + apiKey
+  fetch(url)
+    .then(response => response.json())
+    .then(json => {
+      res.send({data: json})
+    })
+    .catch(err => {
+      res.send({error: 'Ocurrio un error'})
+    })
+ }
+
  module.exports = {
    getWeatherByZipcode,
-   getWeatherById
+   getWeatherById,
+   getCityByGeoposition,
  }
