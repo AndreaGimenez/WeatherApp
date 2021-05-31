@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import Marker from './Marker';
 
 export const Map = props => {
-    let markers = [{lat: -34.6007616, lng: -58.4972707}];
     const handleApiLoaded = (map, maps) => {
         map.addListener('click', handleMapClick);
     };
+
     const handleMapClick = (event) => {
-        markers.push({lat:event.latLng.lat(), lng: event.latLng.lng()})
+        const previousMarkers = props.markers;
+        props.addMarker([...previousMarkers, {lat:event.latLng.lat(), lng: event.latLng.lng()}])
     }
+
     return (
-        // Important! Always set the container height explicitly
         <div style={{ height: '100vh', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: "AIzaSyByHV5OnD2b9mgInpG5Z-0pWmJeGpLwZH8" }}
@@ -22,12 +22,12 @@ export const Map = props => {
                 onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
                 onBoundsChange={props.onCenterChange}
             >
-            {markers.map(marker => {
+            {props.markers.map(marker => {
                return(
-                    <AnyReactComponent
+                    <Marker
                         lat={marker.lat}
                         lng={marker.lng}
-                        text="My Marker"/> 
+                        text="My Marker My Marker My Marker My Marker My Marker"/> 
                     )}
                 )
             }

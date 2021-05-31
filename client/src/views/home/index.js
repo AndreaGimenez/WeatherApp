@@ -6,6 +6,7 @@ import DrawerComponent from '../../components/Drawer';
 export const Home = props => {
     const [center, setCenter] = useState({lat: -34.6007616, lng: -58.4972707});
     const [zoom, setZoom] = useState(16);
+    const[markers, setMarkers] = useState([{lat: -34.6007616, lng: -58.4972707}, {lat: -34.5984124, lng: -58.50094}])
 
     const handleCenterChange = (newCenter, newZoom) => {
         setCenter(newCenter);
@@ -19,6 +20,8 @@ export const Home = props => {
                 center={center}
                 zoom={zoom}
                 onCenterChange={handleCenterChange}
+                markers={markers}
+                addMarker={setMarkers}
             />
         </div>
     )
